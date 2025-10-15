@@ -336,6 +336,8 @@ docker exec -it postgres-config psql -U postgres
 SHOW wal_buffers;
 ```
 ### ผลการทดลอง
+<img width="297" height="126" alt="image" src="https://github.com/user-attachments/assets/22b2947b-734f-431f-935e-5ac751d15201" />
+
 ```
 รูปผลการเปลี่ยนแปลงค่า wal_buffers
 ```
@@ -353,6 +355,8 @@ SELECT pg_reload_conf();
 SHOW effective_cache_size;
 ```
 ### ผลการทดลอง
+<img width="389" height="126" alt="image" src="https://github.com/user-attachments/assets/f49b39cc-5e4d-47db-9b68-213977d99c48" />
+
 ```
 รูปผลการเปลี่ยนแปลงค่า effective_cache_size
 ```
@@ -382,6 +386,8 @@ WHERE name IN (
 ORDER BY name;
 ```
 ### ผลการทดลอง
+<img width="1159" height="148" alt="image" src="https://github.com/user-attachments/assets/88504dce-8963-4a31-a7ec-de35a275a62e" />
+
 ```
 รูปผลการลัพธ์การตั้งค่า
 ```
