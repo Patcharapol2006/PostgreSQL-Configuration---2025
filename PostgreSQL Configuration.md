@@ -432,10 +432,12 @@ ORDER BY data
 LIMIT 1000;
 ```
 ### ผลการทดลอง
+<img width="1190" height="301" alt="image" src="https://github.com/user-attachments/assets/8ad9009e-2f5e-40b9-bd24-77c0f13d2cea" />
+
 ```
-1. คำสั่ง EXPLAIN(ANALYZE,BUFFERS) คืออะไร 
+1. คำสั่ง EXPLAIN(ANALYZE,BUFFERS) คืออะไร  EXPLAIN (ANALYZE, BUFFERS) คือคำสั่งที่ให้ฐานข้อมูล แสดงแผนการทำงาน (Execution Plan) พร้อมกับ รันคำสั่ง SQL นั้นจริงๆ เพื่อเก็บสถิติเวลาที่ใช้ในแต่ละขั้นตอน.
 2. รูปผลการรัน
-3. อธิบายผลลัพธ์ที่ได้
+3. อธิบายผลลัพธ์ที่ได้ table ตรง ๆ (Sequential Scan)
 ```
 ```sql
 -- ทดสอบ Hash operation
