@@ -260,6 +260,7 @@ docker exec -it -u postgres postgres-config pg_ctl restart -D /var/lib/postgresq
 
 ### ผลการทดลอง
 <img width="1153" height="279" alt="image" src="https://github.com/user-attachments/assets/423a24c3-0d95-4d53-b01f-52c92eb0d4a4" />
+<img width="403" height="167" alt="image" src="https://github.com/user-attachments/assets/ab68ebd9-ad52-479e-8196-7d8ca4c9fee5" />
 
 ```
 รูปผลการเปลี่ยนแปลงค่า pending_restart
@@ -286,6 +287,9 @@ FROM pg_settings
 WHERE name = 'work_mem';
 ```
 ### ผลการทดลอง
+<img width="508" height="184" alt="image" src="https://github.com/user-attachments/assets/81f03820-2572-4dd5-b2bf-00983362ac31" />
+
+
 ```
 รูปผลการเปลี่ยนแปลงค่า work_mem
 ```
@@ -303,9 +307,13 @@ SELECT pg_reload_conf();
 SHOW maintenance_work_mem;
 ```
 ### ผลการทดลอง
+<img width="598" height="413" alt="image" src="https://github.com/user-attachments/assets/fdf66379-2ddd-4c9b-b779-753874070778" />
+
+
 ```
 รูปผลการเปลี่ยนแปลงค่า maintenance_work_mem
 ```
+
 
 #### 3.4 ปรับแต่ง WAL Buffers
 ```sql
