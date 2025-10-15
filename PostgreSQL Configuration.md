@@ -589,9 +589,11 @@ ORDER BY heap_blks_read DESC
 LIMIT 10;
 ```
 ### ผลการทดลอง
+<img width="1085" height="59" alt="image" src="https://github.com/user-attachments/assets/8115adbe-6e32-49cf-a6da-9f5b149d2460" />
+
 ```
 1. รูปผลการทดลอง
-2. อธิบายผลลัพธ์ที่ได้
+2. อธิบายผลลัพธ์ที่ได้  PostgreSQL ใช้ cache ได้เต็มที่ → query เร็ว ไม่ต้องโหลดจาก disk แสดงว่า memory ที่ตั้งไว้เพียงพอ และระบบทำงานดี
 ```
 ### Step 7: การปรับแต่ง Autovacuum
 
@@ -604,9 +606,11 @@ WHERE name LIKE '%autovacuum%'
 ORDER BY name;
 ```
 ### ผลการทดลอง
+<img width="1139" height="266" alt="image" src="https://github.com/user-attachments/assets/51bd67ae-fccd-4d29-9962-763d852906db" />
+
 ```
 1. รูปผลการทดลอง
-2. อธิบายค่าต่าง ๆ ที่มีความสำคัญ
+2. อธิบายค่าต่าง ๆ ที่มีความสำคัญ ระบบ autovacuum ทำงานอยู่ และตั้งค่าไว้ค่อนข้างเบา เหมาะกับ table ขนาดกลาง ถ้า workload หนักขึ้น อาจต้องปรับ memory หรือเพิ่ม worker เพื่อให้ล้างข้อมูลทัน
 ```
 
 #### 7.2 การปรับแต่ง Autovacuum สำหรับประสิทธิภาพ
@@ -634,6 +638,7 @@ ALTER SYSTEM SET autovacuum_work_mem = '512MB';
 SELECT pg_reload_conf();
 ```
 ### ผลการทดลอง
+<img width="406" height="113" alt="image" src="https://github.com/user-attachments/assets/9c8641d2-765f-49dd-9ae4-a4902a71c2b1" />
 ```
 รูปผลการทดลองการปรับแต่ง Autovacuum (Capture รวมทั้งหมด 1 รูป)
 ```
@@ -709,6 +714,7 @@ FROM performance_results
 ORDER BY test_timestamp DESC;
 ```
 ### ผลการทดลอง
+<img width="406" height="113" alt="image" src="https://github.com/user-attachments/assets/9c8641d2-765f-49dd-9ae4-a4902a71c2b1" />
 ```
 1. รูปผลการทดลอง
 2. อธิบายผลลัพธ์ที่ได้
@@ -746,6 +752,8 @@ FROM pg_settings WHERE name = 'maintenance_work_mem';
 SELECT * FROM memory_monitor;
 ```
 ### ผลการทดลอง
+![Uploading image.png…]()
+
 ```
 รูปผลการทดลอง
 ```
