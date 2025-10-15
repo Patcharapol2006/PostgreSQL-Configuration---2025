@@ -259,6 +259,8 @@ WHERE name = 'shared_buffers';
 docker exec -it -u postgres postgres-config pg_ctl restart -D /var/lib/postgresql/data -m fast
 
 ### ผลการทดลอง
+<img width="1153" height="279" alt="image" src="https://github.com/user-attachments/assets/423a24c3-0d95-4d53-b01f-52c92eb0d4a4" />
+
 ```
 รูปผลการเปลี่ยนแปลงค่า pending_restart
 รูปหลังจาก restart postgres
