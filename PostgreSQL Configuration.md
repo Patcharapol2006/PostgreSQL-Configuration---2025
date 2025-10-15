@@ -450,10 +450,20 @@ LIMIT 100;
 ```
 
 ### ผลการทดลอง
+<img width="1170" height="302" alt="image" src="https://github.com/user-attachments/assets/5e45b4a4-05be-4be9-89c9-1802a19737c4" />
+
 ```
-1. รูปผลการรัน
-2. อธิบายผลลัพธ์ที่ได้ 
-3. การสแกนเป็นแบบใด เกิดจากเหตุผลใด
+ใช้ memory 40kB
+
+เวลา query รวมแค่ 1.190 ms — เร็วมาก 3. การสแกนเป็นแบบใด เกิดจากเหตุผลใด คืออ่านข้อมูลทั้ง table ทีละแถว
+
+เหตุผล:
+
+ไม่มี index บน column ที่ใช้
+
+PostgreSQL เลือกวิธีนี้เพราะ table ยังเล็ก (แค่ ~1070 rows)
+
+ถ้า table ใหญ่ขึ้น ควรสร้าง index เพื่อให้เร็วขึ้น
 ```
 #### 5.3 การทดสอบ Maintenance Work Memory
 ```sql
@@ -469,9 +479,16 @@ DELETE FROM large_table WHERE id % 10 = 0;
 VACUUM (ANALYZE, VERBOSE) large_table;
 ```
 ### ผลการทดลอง
+<img width="1053" height="686" alt="image" src="https://github.com/user-attachments/assets/523740af-6ff9-4336-ace7-595475cddde1" />
+
 ```
-1. รูปผลการทดลอง จากคำสั่ง VACUUM (ANALYZE, VERBOSE) large_table;
-2. อธิบายผลลัพธ์ที่ได้
+Table ยังไม่มีข้อมูลเสีย
+
+VACUUM ทำงานเร็วมาก
+
+เหมาะสำหรับเตรียมฐานข้อมูลให้พร้อมใช้งานเร็ว ๆ
+
+ถ้าจะเทส performance ต่อ เช่น SELECT, JOIN, หรือ EXPLAIN ก็ลุยต่อได้เลยครับ
 ```
 ### Step 6: การติดตาม Memory Usage
 
@@ -513,6 +530,8 @@ SELECT
 FROM get_memory_usage();
 ```
 ### ผลการทดลอง
+<img width="969" height="289" alt="image" src="https://github.com/user-attachments/assets/8e7e9460-2c6d-49a3-86a3-07ded9013194" />
+
 ```
 รูปผลการทดลอง
 ```
@@ -534,6 +553,7 @@ WHERE heap_blks_read + heap_blks_hit > 0
 ORDER BY heap_blks_read + heap_blks_hit DESC;
 ```
 ### ผลการทดลอง
+<img width="781" height="68" alt="image" src="https://github.com/user-attachments/assets/b64e928b-d622-4dae-8912-2371cf09e1e7" />
 ```
 1. รูปผลการทดลอง
 2. อธิบายผลลัพธ์ที่ได้
